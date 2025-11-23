@@ -1,165 +1,61 @@
-/* Basic reset */
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Based Jesus - Meme Coin</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
 
-:root{
-  --bg-1: #0f1724; /* deep navy */
-  --bg-2: #0b2036; /* teal-ish */
-  --accent: #ffd166; /* warm gold */
-  --card-bg: rgba(255,255,255,0.04);
-  --glass: rgba(255,255,255,0.06);
-  --text: #e6eef6;
-  --muted: #a8b6c7;
-  --accent-2: #7ae7ff;
-  font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
-}
+  <div class="overlay"></div>
 
-/* Page background and overlay */
-html,body {
-  height: 100%;
-  background: linear-gradient(135deg, var(--bg-1) 0%, var(--bg-2) 100%);
-  color: var(--text);
-  -webkit-font-smoothing:antialiased;
-  -moz-osx-font-smoothing:grayscale;
-  line-height: 1.4;
-}
+  <header class="hero">
+    <h1>Based Jesus</h1>
+    <p>“Based in the temple, hodling to the moon!”</p>
+    <!-- Added a button so the user can trigger the blessing -->
+    <button id="blessBtn" type="button">Get Blessed</button>
+  </header>
 
-/* subtle vignette overlay (matches .overlay element in HTML) */
-.overlay {
-  position: fixed;
-  inset: 0;
-  background: radial-gradient(ellipse at center, rgba(255,255,255,0.02), transparent 30%);
-  pointer-events: none;
-}
+  <main>
+    <section class="tokenomics">
+      <h2>Tokenomics</h2>
+      <div class="cards">
+        <div class="card">
+          <h3>The Disciples</h3>
+          <p>Equipe / Fundadores: 5% (50M BJES)</p>
+        </div>
+        <div class="card">
+          <h3>Temple Fund</h3>
+          <p>Marketing / Liquidez: 15% (150M BJES)</p>
+        </div>
+        <div class="card">
+          <h3>Sermon Drops</h3>
+          <p>Community / Airdrops: 5% (50M BJES)</p>
+        </div>
+        <div class="card">
+          <h3>Followers of Faith</h3>
+          <p>Público / Holders: 75% (750M BJES)</p>
+        </div>
+      </div>
+    </section>
 
-/* Header / hero */
-.hero {
-  max-width: 1100px;
-  margin: 48px auto 24px;
-  padding: 36px;
-  text-align: center;
-  background: linear-gradient(180deg, rgba(255,255,255,0.02), transparent);
-  border-radius: 12px;
-  box-shadow: 0 6px 30px rgba(2,6,23,0.6);
-  border: 1px solid rgba(255,255,255,0.03);
-}
+    <section class="links">
+      <h2>Links</h2>
+      <div class="buttons">
+        <a href="#" target="_blank" rel="noopener noreferrer">Twitter</a>
+        <a href="#" target="_blank" rel="noopener noreferrer">Discord</a>
+        <a href="#" target="_blank" rel="noopener noreferrer">Telegram</a>
+        <a href="#" target="_blank" rel="noopener noreferrer">Pump.fun</a>
+      </div>
+    </section>
+  </main>
 
-.hero h1 {
-  font-size: 2.6rem;
-  letter-spacing: -0.02em;
-  margin-bottom: 8px;
-  color: var(--accent);
-  text-shadow: 0 2px 12px rgba(0,0,0,0.6);
-}
+  <footer>
+    <p>© 2025 Based Jesus. Hold your faith, hodl your coins!</p>
+  </footer>
 
-.hero p {
-  color: var(--muted);
-  margin-bottom: 16px;
-  font-size: 1.05rem;
-}
-
-/* Bless button in hero */
-#blessBtn {
-  appearance: none;
-  -webkit-appearance: none;
-  border: none;
-  padding: 10px 18px;
-  background: linear-gradient(90deg, var(--accent) 0%, #ffd89b 100%);
-  color: #091523;
-  font-weight: 600;
-  border-radius: 999px;
-  cursor: pointer;
-  box-shadow: 0 6px 18px rgba(255,209,102,0.12), 0 2px 6px rgba(0,0,0,0.45);
-  transition: transform 160ms ease, box-shadow 160ms ease;
-}
-#blessBtn:hover { transform: translateY(-2px); }
-#blessBtn:active { transform: translateY(0); }
-
-/* Main layout */
-main {
-  max-width: 1100px;
-  margin: 20px auto 60px;
-  padding: 0 20px;
-}
-
-/* Tokenomics cards */
-.tokenomics h2, .links h2 {
-  font-size: 1.25rem;
-  margin-bottom: 12px;
-  color: var(--text);
-}
-
-.cards {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 16px;
-  margin-top: 12px;
-}
-
-.card {
-  padding: 18px;
-  background: linear-gradient(180deg, var(--card-bg), rgba(255,255,255,0.02));
-  border-radius: 10px;
-  border: 1px solid rgba(255,255,255,0.02);
-  box-shadow: 0 8px 24px rgba(3,6,18,0.6);
-}
-
-.card h3 {
-  font-size: 1rem;
-  color: var(--accent-2);
-  margin-bottom: 6px;
-}
-.card p {
-  color: var(--muted);
-  font-size: 0.95rem;
-}
-
-/* Links / buttons area */
-.links .buttons {
-  display: flex;
-  gap: 10px;
-  flex-wrap: wrap;
-  margin-top: 12px;
-}
-
-.links a {
-  display: inline-block;
-  text-decoration: none;
-  color: var(--text);
-  background: var(--glass);
-  padding: 10px 14px;
-  border-radius: 8px;
-  border: 1px solid rgba(255,255,255,0.03);
-  transition: transform 120ms ease, background 120ms ease;
-  font-weight: 600;
-}
-.links a:hover {
-  transform: translateY(-3px);
-  background: linear-gradient(90deg, rgba(255,255,255,0.035), rgba(0,0,0,0.02));
-}
-
-/* Footer */
-footer {
-  text-align: center;
-  color: var(--muted);
-  padding: 28px 16px;
-  border-top: 1px solid rgba(255,255,255,0.02);
-  max-width: 1100px;
-  margin: 0 auto 80px;
-  font-size: 0.95rem;
-}
-
-/* Responsive */
-@media (max-width: 900px) {
-  .cards { grid-template-columns: repeat(2, 1fr); }
-  .hero { margin: 28px 12px; padding: 28px; }
-}
-
-@media (max-width: 520px) {
-  .cards { grid-template-columns: 1fr; }
-  #blessBtn { width: 100%; }
-  .links .buttons { flex-direction: column; }
-}
+  <!-- Include the script (defer so DOM exists) -->
+  <script src="script.js" defer></script>
+</body>
+</html>
