@@ -1,0 +1,135 @@
+/* Fonte e reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Arial', sans-serif;
+}
+
+/* Fundo com imagem + overlay */
+body {
+  background: url('https://www.bonsfluidos.com.br/wp-content/uploads/2024/09/CAPA-BONS-FLUIDOS-74.jpg') no-repeat center center/cover;
+  color: #00ffff;
+  position: relative;
+  min-height: 100vh;
+}
+
+/* Overlay para legibilidade */
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 30, 0.6);
+  z-index: 0;
+}
+
+/* Hero / Header */
+.hero {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  padding: 120px 20px 80px;
+}
+
+.hero h1 {
+  font-size: 4rem;
+  text-shadow: 0 0 20px #00ffff, 0 0 40px #00ffff;
+}
+
+.hero p {
+  font-size: 1.5rem;
+  margin-top: 20px;
+  text-shadow: 0 0 10px #00ffff;
+}
+
+/* Tokenomics */
+.tokenomics {
+  position: relative;
+  z-index: 1;
+  padding: 60px 20px;
+  text-align: center;
+}
+
+.tokenomics h2 {
+  font-size: 2.5rem;
+  margin-bottom: 40px;
+  text-shadow: 0 0 15px #00ffff;
+}
+
+.cards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+}
+
+.card {
+  background: rgba(0, 0, 30, 0.7);
+  border: 2px solid #00ffff;
+  border-radius: 15px;
+  padding: 30px 20px;
+  width: 220px;
+  transition: all 0.3s;
+  box-shadow: 0 0 15px #00ffff;
+}
+
+.card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 0 25px #00ffff;
+}
+
+.card h3 {
+  margin-bottom: 10px;
+  font-size: 1.2rem;
+}
+
+/* Links / Botões */
+.links {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  padding: 60px 20px;
+}
+
+.links h2 {
+  font-size: 2.5rem;
+  margin-bottom: 30px;
+  text-shadow: 0 0 15px #00ffff;
+}
+
+.buttons a {
+  display: inline-block;
+  margin: 10px;
+  padding: 15px 30px;
+  color: #00ffff;
+  text-decoration: none;
+  border: 2px solid #00ffff;
+  border-radius: 10px;
+  transition: all 0.3s;
+  text-shadow: 0 0 5px #00ffff;
+}
+
+.buttons a:hover {
+  background: #000033;
+  box-shadow: 0 0 20px #00ffff;
+  transform: scale(1.1);
+}
+
+/* Footer */
+footer {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  padding: 30px 20px;
+  text-shadow: 0 0 10px #00ffff;
+}
+
+/* Responsivo */
+@media (max-width: 700px) {
+  .cards {
+    flex-direction: column;
+    align-items: center;
+  }
+}
