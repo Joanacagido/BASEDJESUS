@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Based Jesus - Meme Coin</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="overlay"></div>
+
+  <header class="hero">
+    <h1>Based Jesus</h1>
+    <p>“Based in the temple, hodling to the moon!”</p>
+  </header>
+
+  <main>
+    <section class="tokenomics">
+      <h2>Tokenomics</h2>
+      <div class="cards">
+        <div class="card">
+          <h3>The Disciples</h3>
+          <p>Equipe / Fundadores: 5% (50M BJES)</p>
+        </div>
+        <div class="card">
+          <h3>Temple Fund</h3>
+          <p>Marketing / Liquidez: 15% (150M BJES)</p>
+        </div>
+        <div class="card">
+          <h3>Sermon Drops</h3>
+          <p>Community / Airdrops: 5% (50M BJES)</p>
+        </div>
+        <div class="card">
+          <h3>Followers of Faith</h3>
+          <p>Público / Holders: 75% (750M BJES)</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="links">
+      <h2>Links</h2>
+      <div class="buttons">
+        <a href="#">Twitter</a>
+        <a href="#">Discord</a>
+        <a href="#">Telegram</a>
+        <a href="#">Pump.fun</a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>© 2025 Based Jesus. Hold your faith, hodl your coins!</p>
+  </footer>
+
+</body>
+</html>
