@@ -1,58 +1,274 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Based Jesus - Meme Coin</title>
-  <link rel="stylesheet" href="style.css">
+
+  <!-- Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html,body { height: 100%; }
+
+    body {
+      font-family: 'Orbitron', sans-serif;
+      color: #fff;
+      overflow-x: hidden;
+      background: url('https://ih1.redbubble.net/image.5297085216.9173/st,small,507x507-pad,600x600,f8f8f8.jpg') no-repeat center center fixed;
+      background-size: cover;
+      position: relative;
+    }
+
+    .overlay {
+      position: fixed;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(0,0,0,0.45) 0%, rgba(0,0,0,0.75) 100%);
+      z-index: 0;
+      pointer-events: none;
+      backdrop-filter: blur(2px);
+    }
+
+    .page {
+      position: relative;
+      z-index: 1;
+      min-height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 40px;
+      padding: 60px 20px 80px;
+    }
+
+    .hero {
+      text-align: center;
+      margin-top: 8vh;
+    }
+
+    .hero h1 {
+      font-size: clamp(2.6rem, 6vw, 5rem);
+      color: #ff00dd;
+      text-shadow: 0 0 8px rgba(255,0,221,0.9), 0 0 28px rgba(255,0,221,0.6), 0 0 60px rgba(0,170,255,0.08);
+      letter-spacing: 4px;
+    }
+
+    .hero p {
+      margin-top: 12px;
+      font-size: clamp(1rem, 2.2vw, 1.4rem);
+      color: #00aaff;
+      text-shadow: 0 0 10px rgba(0,170,255,0.85);
+    }
+
+    #blessBtn {
+      margin-top: 20px;
+      display: inline-block;
+      padding: 12px 26px;
+      font-size: 1rem;
+      border-radius: 10px;
+      border: 2px solid rgba(255,0,221,0.95);
+      background: linear-gradient(90deg, rgba(255,0,221,0.12), rgba(0,170,255,0.06));
+      color: #ff00dd;
+      cursor: pointer;
+      box-shadow: 0 0 12px rgba(255,0,221,0.8), 0 0 28px rgba(0,170,255,0.15);
+      transition: transform .18s ease, box-shadow .18s ease, color .18s ease, background .18s ease;
+      z-index: 2;
+    }
+
+    #blessBtn:hover {
+      transform: translateY(-6px) scale(1.03);
+      background: linear-gradient(90deg, rgba(255,0,221,0.95), rgba(0,170,255,0.35));
+      color: #000;
+      box-shadow: 0 0 28px rgba(255,0,221,0.95), 0 0 60px rgba(0,170,255,0.45);
+    }
+
+    main {
+      width: min(1150px, 94%);
+      margin: 0 auto;
+      z-index: 1;
+    }
+
+    .roadmap {
+      padding: 30px;
+      margin-top: 10px;
+    }
+
+    .roadmap h2 {
+      font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+      color: #00aaff;
+      text-shadow: 0 0 18px rgba(0,170,255,0.95), 0 0 40px rgba(0,170,255,0.45);
+      text-align: center;
+      margin-bottom: 22px;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 22px;
+      align-items: stretch;
+    }
+
+    .card {
+      background: linear-gradient(180deg, rgba(0,0,0,0.55), rgba(0,0,0,0.45));
+      border-radius: 14px;
+      padding: 20px;
+      border: 1px solid rgba(0,170,255,0.08);
+      box-shadow: 0 6px 30px rgba(0,0,0,0.6), 0 0 18px rgba(255,0,221,0.06);
+      transition: transform .28s cubic-bezier(.2,.9,.2,1), box-shadow .28s;
+    }
+
+    .card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 18px 60px rgba(0,0,0,0.7), 0 0 40px rgba(0,170,255,0.12), 0 0 60px rgba(255,0,221,0.06);
+    }
+
+    .card h3 {
+      margin-bottom: 10px;
+      font-size: 1.15rem;
+      color: #00aaff;
+      text-shadow: 0 0 12px rgba(0,170,255,0.85);
+    }
+
+    .card p {
+      color: #e9f6ff;
+      font-size: .98rem;
+      line-height: 1.45;
+      opacity: .95;
+    }
+
+    .links {
+      margin-top: 36px;
+      padding: 20px;
+      text-align: center;
+    }
+
+    .links h2 {
+      color: #ff00dd;
+      font-size: 1.6rem;
+      margin-bottom: 14px;
+      text-shadow: 0 0 14px rgba(255,0,221,0.9);
+    }
+
+    .buttons {
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .buttons a {
+      padding: 10px 18px;
+      border-radius: 10px;
+      border: 1.8px solid rgba(0,170,255,0.95);
+      color: #00aaff;
+      text-decoration: none;
+      font-weight: 700;
+      letter-spacing: .6px;
+      background: rgba(0,170,255,0.02);
+      box-shadow: 0 0 10px rgba(0,170,255,0.08);
+      transition: transform .18s, box-shadow .18s, background .18s;
+    }
+
+    .buttons a:hover {
+      transform: translateY(-6px);
+      background: rgba(0,170,255,0.95);
+      color: #000;
+      box-shadow: 0 12px 40px rgba(0,170,255,0.32);
+    }
+
+    footer {
+      margin-top: 48px;
+      text-align: center;
+      padding: 28px 10px;
+      color: rgba(255,0,221,0.95);
+      text-shadow: 0 0 14px rgba(255,0,221,0.9);
+      font-size: .95rem;
+      opacity: .95;
+    }
+
+    @media (max-width: 640px) {
+      .hero h1 { font-size: 2.4rem; }
+      .hero p { font-size: 1rem; }
+      #blessBtn { padding: 10px 18px; font-size: .95rem; }
+    }
+  </style>
 </head>
-<body style="background: url('https://www.thesun.co.uk/wp-content/uploads/2025/04/msemail_rm_jJPG-JS986159511.jpg?strip=all&w=566') no-repeat center center fixed; background-size: cover;">
+<body>
   <div class="overlay"></div>
 
-  <header class="hero">
-    <h1>Based Jesus</h1>
-    <p>"Based in the temple, hodling to the moon!"</p>
-    <button id="blessBtn" type="button">Get Blessed</button>
-  </header>
+  <div class="page">
+    <header class="hero">
+      <h1>Based Jesus</h1>
+      <p>"Based in the temple, hodling to the moon!"</p>
+      <button id="blessBtn" type="button">Get Blessed</button>
+    </header>
 
-  <main>
-    <section class="roadmap">
-      <h2>Roadmap</h2>
-      <div class="cards">
-        <div class="card">
-          <h3>Phase 1: The Baptism</h3>
-          <p>Token and website creation. First wave of hodlers joins!</p>
+    <main>
+      <section class="roadmap" aria-labelledby="roadmap-title">
+        <h2 id="roadmap-title">Roadmap</h2>
+        <div class="cards">
+          <article class="card">
+            <h3>Phase 1 — The Baptism</h3>
+            <p>Token launch & website. Early believers accumulate and build the foundation.</p>
+          </article>
+          <article class="card">
+            <h3>Phase 2 — Miracles</h3>
+            <p>Launch on DEXes, community airdrops, and initial liquidity campaigns.</p>
+          </article>
+          <article class="card">
+            <h3>Phase 3 — Sermon on the Moon</h3>
+            <p>Viral marketing pushes, meme collaborations, influencer drops, and community events.</p>
+          </article>
+          <article class="card">
+            <h3>Phase 4 — Ascension</h3>
+            <p>CEX listings, merch & IRL activations, and global community expansion.</p>
+          </article>
         </div>
-        <div class="card">
-          <h3>Phase 2: Miracles</h3>
-          <p>Launch on major decentralized exchanges and first community airdrops.</p>
-        </div>
-        <div class="card">
-          <h3>Phase 3: Sermon on the Moon</h3>
-          <p>Viral marketing campaigns, collaborations with memes and crypto influencers.</p>
-        </div>
-        <div class="card">
-          <h3>Phase 4: Ascension</h3>
-          <p>Listing on centralized exchanges and global expansion of the Based Jesus community.</p>
-        </div>
-      </div>
-    </section>
+      </section>
 
-    <section class="links">
-      <h2>Links</h2>
-      <div class="buttons">
-        <a href="#" target="_blank" rel="noopener noreferrer">Twitter</a>
-        <a href="#" target="_blank" rel="noopener noreferrer">Discord</a>
-        <a href="#" target="_blank" rel="noopener noreferrer">Telegram</a>
-        <a href="#" target="_blank" rel="noopener noreferrer">Pump.fun</a>
-      </div>
-    </section>
-  </main>
+      <section class="links" aria-labelledby="links-title">
+        <h2 id="links-title">Links</h2>
+        <div class="buttons">
+          <a href="#" target="_blank" rel="noopener">Twitter</a>
+          <a href="#" target="_blank" rel="noopener">Discord</a>
+          <a href="#" target="_blank" rel="noopener">Telegram</a>
+          <a href="#" target="_blank" rel="noopener">Pump.fun</a>
+        </div>
+      </section>
+    </main>
 
-  <footer>
-    <p>© 2025 Based Jesus. Hold your faith, hodl your coins!</p>
-  </footer>
+    <footer>
+      <p>© 2025 Based Jesus. Hold your faith, hodl your coins!</p>
+    </footer>
+  </div>
 
-  <script src="script.js" defer></script>
+  <script>
+    const btn = document.getElementById('blessBtn');
+    btn.addEventListener('click', () => {
+      btn.animate([
+        { transform: 'scale(1)', boxShadow: '0 0 12px rgba(255,0,221,0.8)' },
+        { transform: 'scale(1.15)', boxShadow: '0 0 45px rgba(255,0,221,0.95)' },
+        { transform: 'scale(1)', boxShadow: '0 0 12px rgba(255,0,221,0.8)' }
+      ], { duration: 600, easing: 'cubic-bezier(.2,.9,.2,1)' });
+
+      const msg = document.createElement('div');
+      msg.textContent = 'You have been blessed! ✝️🚀';
+      msg.style.position = 'fixed';
+      msg.style.left = '50%';
+      msg.style.top = '22%';
+      msg.style.transform = 'translateX(-50%)';
+      msg.style.background = 'linear-gradient(90deg, rgba(255,0,221,0.95), rgba(0,170,255,0.95))';
+      msg.style.color = '#000';
+      msg.style.padding = '12px 18px';
+      msg.style.borderRadius = '10px';
+      msg.style.fontWeight = '700';
+      msg.style.zIndex = 9999;
+      msg.style.boxShadow = '0 8px 40px rgba(0,0,0,0.6)';
+      document.body.appendChild(msg);
+
+      setTimeout(() => { msg.style.opacity = '0'; msg.style.transition = 'opacity .6s ease'; }, 1100);
+      setTimeout(() => { if(msg.parentNode) msg.parentNode.removeChild(msg); }, 1700);
+    });
+  </script>
 </body>
 </html>
