@@ -1,156 +1,197 @@
-/* Google Fonts Cyberpunk */
 @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
 
-/* Reset básico */
+:root {
+  --pink: #ff00dd;
+  --pink-glow: rgba(255, 0, 221, 0.85);
+  --blue: #00aaff;
+  --blue-glow: rgba(0, 170, 255, 0.85);
+  --card-bg: rgba(2, 2, 6, 0.64);
+}
+
 * {
+  box-sizing: border-box;
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
-  font-family: 'Orbitron', sans-serif;
 }
-
-/* Background */
-.background {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
+html, body {
   height: 100%;
-  background: url('https://www.thesun.co.uk/wp-content/uploads/2025/04/msemail_rm_jJPG-JS986159511.jpg?strip=all&w=566') no-repeat center center;
-  background-size: cover;
-  z-index: -2;
 }
 
-/* Overlay escuro para contraste */
+body {
+  font-family: 'Orbitron', sans-serif;
+  color: #fff;
+  background: url('sandbox:/mnt/data/A_digital_illustration_in_a_blend_of_religious_ico.png')
+    no-repeat center center fixed;
+  background-size: cover;
+  position: relative;
+  overflow-x: hidden;
+  line-height: 1.35;
+}
+
+/* Flicker Animation */
+@keyframes neon-flicker {
+  0%, 100% { opacity: 1; filter: brightness(1); }
+  5% { opacity: 0.88; filter: brightness(0.9); }
+  10% { opacity: 1; filter: brightness(1); }
+}
+
+/* Overlay */
 .overlay {
   position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0,0,0,0.7);
-  z-index: -1;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(0,0,0,0.4) 0%, rgba(0,0,0,0.78) 100%);
+  z-index: 0;
+  pointer-events: none;
+  backdrop-filter: blur(2px);
 }
 
-/* Header Hero */
+/* Page Container */
+.page {
+  position: relative;
+  z-index: 1;
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 36px;
+  padding: 60px 20px 80px;
+}
+
+/* Hero */
 .hero {
   text-align: center;
-  padding: 100px 20px 60px;
-  color: #ff33cc; /* Neon pink */
-  text-shadow: 0 0 10px #ff33cc, 0 0 20px #ff66ff, 0 0 40px #ff66ff;
+  margin-top: 6vh;
 }
-
 .hero h1 {
-  font-size: 4rem;
+  font-size: clamp(2.4rem, 6vw, 4.8rem);
+  color: var(--pink);
+  letter-spacing: 3px;
+  text-shadow: 0 0 8px var(--pink-glow), 0 0 32px rgba(255,0,221,0.45), 0 6px 24px rgba(0,0,0,0.6);
+  animation: neon-flicker 4s infinite;
 }
-
 .hero p {
-  font-size: 1.5rem;
-  margin: 20px 0;
+  margin-top: 12px;
+  font-size: clamp(0.95rem, 2.1vw, 1.25rem);
+  color: var(--blue);
+  text-shadow: 0 0 12px var(--blue-glow);
 }
 
-/* Button Get Blessed */
+/* Hero Text / Meme Coin Intro */
+.hero-text p {
+  margin-top: 25px;
+  font-size: clamp(1rem, 2.2vw, 1.3rem);
+  color: var(--blue);
+  text-shadow: 0 0 12px var(--blue-glow), 0 0 30px rgba(0, 0, 0, 0.45);
+  max-width: 700px;
+  margin-inline: auto;
+  line-height: 1.6;
+}
+
+/* Bless Button */
 #blessBtn {
-  font-family: 'Press Start 2P', cursive;
+  margin-top: 20px;
+  padding: 12px 26px;
   font-size: 1rem;
-  padding: 15px 35px;
-  background: linear-gradient(45deg, #ff33cc, #ff66ff);
-  border: none;
-  border-radius: 12px;
-  color: #fff;
+  border-radius: 10px;
+  border: 2px solid rgba(255,0,221,0.95);
+  background: linear-gradient(90deg, rgba(255,0,221,0.12), rgba(0,170,255,0.06));
+  color: var(--pink);
   cursor: pointer;
-  box-shadow: 0 0 15px #ff33cc, 0 0 30px #ff66ff;
-  transition: all 0.3s ease;
+  box-shadow: 0 0 14px rgba(255,0,221,0.65), 0 6px 30px rgba(0,0,0,0.6);
+  transition: transform .18s ease, box-shadow .18s ease, background .18s ease, color .18s ease;
+  backdrop-filter: blur(2px);
+}
+#blessBtn:hover {
+  transform: translateY(-6px) scale(1.02);
+  background: linear-gradient(90deg, rgba(255,0,221,0.98), rgba(0,170,255,0.28));
+  color: #000;
+  box-shadow: 0 0 36px rgba(255,0,221,0.98), 0 0 80px rgba(0,0,170,255,0.28);
 }
 
-#blessBtn:hover {
-  transform: scale(1.1);
-  box-shadow: 0 0 30px #ff33cc, 0 0 60px #ff66ff, 0 0 90px #ff33cc;
+/* Main Content */
+main {
+  width: min(1150px, 94%);
+  margin: 0 auto;
+  z-index: 1;
 }
 
 /* Roadmap Section */
 .roadmap {
-  padding: 60px 20px;
-  text-align: center;
+  padding: 28px 8px;
+  margin-top: 8px;
 }
-
 .roadmap h2 {
-  font-size: 3rem;
-  color: #33ccff; /* Neon blue */
-  text-shadow: 0 0 10px #33ccff, 0 0 20px #00ffff, 0 0 40px #33ccff;
-  margin-bottom: 40px;
-}
-
-.cards {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 30px;
-}
-
-.card {
-  background: rgba(0,0,0,0.8);
-  border: 2px solid #33ccff;
-  border-radius: 15px;
-  padding: 25px;
-  width: 280px;
-  color: #33ccff;
+  font-size: clamp(1.6rem, 3.2vw, 2.6rem);
+  color: var(--blue);
+  text-shadow: 0 0 18px var(--blue-glow), 0 0 36px rgba(0,170,255,0.32);
+  margin-bottom: 20px;
   text-align: center;
-  box-shadow: 0 0 15px #33ccff, 0 0 30px #00ffff;
-  transition: all 0.3s ease;
 }
-
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 20px;
+}
+.card {
+  background: var(--card-bg);
+  border-radius: 14px;
+  padding: 20px;
+  border: 1px solid rgba(255,255,255,0.03);
+  box-shadow: 0 8px 36px rgba(0,0,0,0.6), 0 0 12px rgba(0,0,0,0.45);
+  transition: transform .28s cubic-bezier(.2,.9,.2,1), box-shadow .28s;
+  min-height: 130px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
 .card:hover {
-  transform: translateY(-15px);
-  box-shadow: 0 0 30px #33ccff, 0 0 60px #00ffff, 0 0 90px #33ccff;
+  transform: translateY(-12px);
+  box-shadow: 0 26px 80px rgba(0,0,0,0.7), 0 0 36px rgba(0,170,255,0.12), 0 0 60px rgba(255,0,221,0.06);
 }
-
 .card h3 {
-  font-size: 1.5rem;
-  margin-bottom: 15px;
+  margin-bottom: 10px;
+  font-size: 1.05rem;
+  color: var(--blue);
+  text-shadow: 0 0 12px var(--blue-glow);
 }
-
 .card p {
-  font-size: 1rem;
+  color: #e9f6ff;
+  font-size: 0.98rem;
+  line-height: 1.48;
+  opacity: 0.98;
 }
 
 /* Links Section */
 .links {
-  padding: 60px 20px;
+  margin-top: 34px;
+  padding: 12px;
   text-align: center;
 }
-
 .links h2 {
-  font-size: 3rem;
-  color: #ff33cc;
-  text-shadow: 0 0 10px #ff33cc, 0 0 20px #ff66ff, 0 0 40px #ff66ff;
-  margin-bottom: 30px;
+  color: var(--pink);
+  font-size: 1.4rem;
+  margin-bottom: 14px;
+  text-shadow: 0 0 12px var(--pink-glow);
 }
-
+.buttons {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
 .buttons a {
-  display: inline-block;
-  margin: 10px 15px;
-  padding: 15px 30px;
-  color: #fff;
+  padding: 10px 18px;
+  border-radius: 10px;
+  border: 1.6px solid rgba(0,170,255,0.95);
+  color: var(--blue);
   text-decoration: none;
-  font-weight: bold;
-  border-radius: 12px;
-  background: linear-gradient(45deg, #ff33cc, #ff66ff);
-  box-shadow: 0 0 15px #ff33cc, 0 0 30px #ff66ff;
-  transition: all 0.3s ease;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  background: rgba(0,170,255,0.02);
+  box-shadow: 0 0 10px rgba(0,170,255,0.06);
+  transition: transform .2s, box-shadow .2s;
 }
-
 .buttons a:hover {
-  transform: scale(1.1);
-  box-shadow: 0 0 30px #ff33cc, 0 0 60px #ff66ff, 0 0 90px #ff33cc;
-}
-
-/* Footer */
-footer {
-  text-align: center;
-  padding: 50px 20px;
-  font-size: 1rem;
-  color: #ff33cc;
-  text-shadow: 0 0 10px #ff33cc, 0 0 20px #ff66ff, 0 0 40px #ff66ff;
+  transform: translateY(-4px);
+  box-shadow: 0 0 22px rgba(0,170,255,0.35);
 }
