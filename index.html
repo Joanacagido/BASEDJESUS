@@ -1,33 +1,48 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Based Jesus - Meme Coin</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Based Jesus Coin</title>
 
-  <!-- Font -->
+  <!-- Fonte -->
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
 
+  <!-- CSS -->
   <style>
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    html,body { height: 100%; }
+    :root {
+      --pink: #ff00dd;
+      --pink-glow: rgba(255, 0, 221, 0.85);
+      --blue: #00aaff;
+      --blue-glow: rgba(0, 170, 255, 0.85);
+      --card-bg: rgba(2, 2, 6, 0.64);
+    }
 
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body { height: 100%; }
     body {
       font-family: 'Orbitron', sans-serif;
       color: #fff;
-      overflow-x: hidden;
-      background: url('https://ih1.redbubble.net/image.5297085216.9173/st,small,507x507-pad,600x600,f8f8f8.jpg') no-repeat center center fixed;
+      background: url('https://pbs.twimg.com/profile_images/1993369040455192576/RPJ3Ffcw_400x400.jpg') no-repeat center center fixed;
       background-size: cover;
       position: relative;
+      overflow-x: hidden;
+      line-height: 1.35;
+    }
+
+    @keyframes neon-flicker {
+      0%, 100% { opacity: 1; filter: brightness(1); }
+      5% { opacity: 0.88; filter: brightness(0.9); }
+      10% { opacity: 1; filter: brightness(1); }
     }
 
     .overlay {
       position: fixed;
       inset: 0;
-      background: linear-gradient(180deg, rgba(0,0,0,0.45) 0%, rgba(0,0,0,0.75) 100%);
+      background: linear-gradient(180deg, rgba(0,0,0,0.4) 0%, rgba(0,0,0,0.78) 100%);
+      backdrop-filter: blur(2px);
       z-index: 0;
       pointer-events: none;
-      backdrop-filter: blur(2px);
     }
 
     .page {
@@ -37,238 +52,158 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 40px;
+      gap: 36px;
       padding: 60px 20px 80px;
     }
 
-    .hero {
-      text-align: center;
-      margin-top: 8vh;
+    .hero { text-align: center; margin-top: 6vh; }
+    .hero img {
+      width: 140px;
+      height: 140px;
+      border-radius: 50%;
+      box-shadow: 0 0 16px var(--pink-glow);
     }
-
     .hero h1 {
-      font-size: clamp(2.6rem, 6vw, 5rem);
-      color: #ff00dd;
-      text-shadow: 0 0 8px rgba(255,0,221,0.9), 0 0 28px rgba(255,0,221,0.6), 0 0 60px rgba(0,170,255,0.08);
-      letter-spacing: 4px;
+      font-size: clamp(2.4rem, 6vw, 4.8rem);
+      color: var(--pink);
+      letter-spacing: 3px;
+      text-shadow: 0 0 8px var(--pink-glow), 0 0 32px rgba(255,0,221,0.45), 0 6px 24px rgba(0,0,0,0.6);
+      animation: neon-flicker 4s infinite;
     }
-
     .hero p {
       margin-top: 12px;
-      font-size: clamp(1rem, 2.2vw, 1.4rem);
-      color: #00aaff;
-      text-shadow: 0 0 10px rgba(0,170,255,0.85);
+      font-size: clamp(0.95rem, 2.1vw, 1.25rem);
+      color: var(--blue);
+      text-shadow: 0 0 12px var(--blue-glow);
+    }
+    .hero-text p {
+      margin-top: 25px;
+      font-size: clamp(1rem, 2.2vw, 1.3rem);
+      color: var(--blue);
+      text-shadow: 0 0 12px var(--blue-glow), 0 0 30px rgba(0,0,0,0.45);
+      max-width: 700px;
+      margin-inline: auto;
+      line-height: 1.6;
     }
 
     #blessBtn {
       margin-top: 20px;
-      display: inline-block;
       padding: 12px 26px;
       font-size: 1rem;
       border-radius: 10px;
       border: 2px solid rgba(255,0,221,0.95);
       background: linear-gradient(90deg, rgba(255,0,221,0.12), rgba(0,170,255,0.06));
-      color: #ff00dd;
+      color: var(--pink);
       cursor: pointer;
-      box-shadow: 0 0 12px rgba(255,0,221,0.8), 0 0 28px rgba(0,170,255,0.15);
-      transition: transform .18s ease, box-shadow .18s ease, color .18s ease, background .18s ease;
-      z-index: 2;
+      box-shadow: 0 0 14px rgba(255,0,221,0.65), 0 6px 30px rgba(0,0,0,0.6);
+      transition: transform .18s ease, box-shadow .18s ease, background .18s ease, color .18s ease;
+      backdrop-filter: blur(2px);
     }
-
     #blessBtn:hover {
-      transform: translateY(-6px) scale(1.03);
-      background: linear-gradient(90deg, rgba(255,0,221,0.95), rgba(0,170,255,0.35));
+      transform: translateY(-6px) scale(1.02);
+      background: linear-gradient(90deg, rgba(255,0,221,0.98), rgba(0,170,255,0.28));
       color: #000;
-      box-shadow: 0 0 28px rgba(255,0,221,0.95), 0 0 60px rgba(0,170,255,0.45);
+      box-shadow: 0 0 36px rgba(255,0,221,0.98), 0 0 80px rgba(0,0,255,0.28);
     }
 
-    main {
-      width: min(1150px, 94%);
-      margin: 0 auto;
-      z-index: 1;
-    }
-
+    /* Roadmap Styles */
     .roadmap {
-      padding: 30px;
-      margin-top: 10px;
+      width: 100%;
+      max-width: 900px;
+      padding: 40px 20px;
+      background: var(--card-bg);
+      border-radius: 16px;
+      box-shadow: 0 0 24px rgba(255,0,221,0.5), 0 0 48px rgba(0,170,255,0.3);
+      text-align: center;
     }
-
     .roadmap h2 {
-      font-size: clamp(1.8rem, 3.5vw, 2.8rem);
-      color: #00aaff;
-      text-shadow: 0 0 18px rgba(0,170,255,0.95), 0 0 40px rgba(0,170,255,0.45);
+      font-size: clamp(2rem, 4vw, 3rem);
+      color: var(--pink);
+      text-shadow: 0 0 12px var(--pink-glow);
+      margin-bottom: 24px;
+    }
+    .roadmap ul {
+      list-style: none;
+      text-align: left;
+      padding-left: 0;
+    }
+    .roadmap li {
+      margin-bottom: 16px;
+      font-size: clamp(1rem, 2vw, 1.2rem);
+      color: var(--blue);
+      text-shadow: 0 0 8px var(--blue-glow);
+      position: relative;
+      padding-left: 24px;
+    }
+    .roadmap li::before {
+      content: "✨";
+      position: absolute;
+      left: 0;
+    }
+
+    /* Twitter Section */
+    .twitter {
+      margin-top: 40px;
       text-align: center;
-      margin-bottom: 22px;
+      color: var(--blue);
     }
-
-    .cards {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-      gap: 22px;
-      align-items: stretch;
+    .twitter h2 {
+      font-size: clamp(2rem, 4vw, 3rem);
+      color: var(--pink);
+      text-shadow: 0 0 12px var(--pink-glow);
+      margin-bottom: 16px;
     }
-
-    .card {
-      background: linear-gradient(180deg, rgba(0,0,0,0.55), rgba(0,0,0,0.45));
-      border-radius: 14px;
-      padding: 20px;
-      border: 1px solid rgba(0,170,255,0.08);
-      box-shadow: 0 6px 30px rgba(0,0,0,0.6), 0 0 18px rgba(255,0,221,0.06);
-      transition: transform .28s cubic-bezier(.2,.9,.2,1), box-shadow .28s;
-    }
-
-    .card:hover {
-      transform: translateY(-10px);
-      box-shadow: 0 18px 60px rgba(0,0,0,0.7), 0 0 40px rgba(0,170,255,0.12), 0 0 60px rgba(255,0,221,0.06);
-    }
-
-    .card h3 {
-      margin-bottom: 10px;
-      font-size: 1.15rem;
-      color: #00aaff;
-      text-shadow: 0 0 12px rgba(0,170,255,0.85);
-    }
-
-    .card p {
-      color: #e9f6ff;
-      font-size: .98rem;
-      line-height: 1.45;
-      opacity: .95;
-    }
-
-    .links {
-      margin-top: 36px;
-      padding: 20px;
-      text-align: center;
-    }
-
-    .links h2 {
-      color: #ff00dd;
-      font-size: 1.6rem;
-      margin-bottom: 14px;
-      text-shadow: 0 0 14px rgba(255,0,221,0.9);
-    }
-
-    .buttons {
-      display: flex;
-      gap: 12px;
-      justify-content: center;
-      flex-wrap: wrap;
-    }
-
-    .buttons a {
-      padding: 10px 18px;
-      border-radius: 10px;
-      border: 1.8px solid rgba(0,170,255,0.95);
-      color: #00aaff;
+    .twitter a {
+      color: var(--blue);
       text-decoration: none;
-      font-weight: 700;
-      letter-spacing: .6px;
-      background: rgba(0,170,255,0.02);
-      box-shadow: 0 0 10px rgba(0,170,255,0.08);
-      transition: transform .18s, box-shadow .18s, background .18s;
+      font-size: 1.2rem;
+      text-shadow: 0 0 8px var(--blue-glow);
+      transition: color .2s;
+    }
+    .twitter a:hover {
+      color: var(--pink);
     }
 
-    .buttons a:hover {
-      transform: translateY(-6px);
-      background: rgba(0,170,255,0.95);
-      color: #000;
-      box-shadow: 0 12px 40px rgba(0,170,255,0.32);
-    }
-
-    footer {
-      margin-top: 48px;
-      text-align: center;
-      padding: 28px 10px;
-      color: rgba(255,0,221,0.95);
-      text-shadow: 0 0 14px rgba(255,0,221,0.9);
-      font-size: .95rem;
-      opacity: .95;
-    }
-
-    @media (max-width: 640px) {
-      .hero h1 { font-size: 2.4rem; }
-      .hero p { font-size: 1rem; }
-      #blessBtn { padding: 10px 18px; font-size: .95rem; }
-    }
   </style>
 </head>
 <body>
   <div class="overlay"></div>
 
   <div class="page">
-    <header class="hero">
-      <h1>Based Jesus</h1>
-      <p>"Based in the temple, hodling to the moon!"</p>
-      <button id="blessBtn" type="button">Get Blessed</button>
-    </header>
+    <div class="hero">
+      <!-- LOGO / PERFIL -->
+      <img src="https://pbs.twimg.com/profile_images/1993369040455192576/RPJ3Ffcw_400x400.jpg" alt="Based Jesus Logo" />
 
-    <main>
-      <section class="roadmap" aria-labelledby="roadmap-title">
-        <h2 id="roadmap-title">Roadmap</h2>
-        <div class="cards">
-          <article class="card">
-            <h3>Phase 1 — The Baptism</h3>
-            <p>Token launch & website. Early believers accumulate and build the foundation.</p>
-          </article>
-          <article class="card">
-            <h3>Phase 2 — Miracles</h3>
-            <p>Launch on DEXes, community airdrops, and initial liquidity campaigns.</p>
-          </article>
-          <article class="card">
-            <h3>Phase 3 — Sermon on the Moon</h3>
-            <p>Viral marketing pushes, meme collaborations, influencer drops, and community events.</p>
-          </article>
-          <article class="card">
-            <h3>Phase 4 — Ascension</h3>
-            <p>CEX listings, merch & IRL activations, and global community expansion.</p>
-          </article>
-        </div>
-      </section>
+      <h1>BASED JESUS</h1>
+      <p>The Meme Coin of Faith & Chaos</p>
 
-      <section class="links" aria-labelledby="links-title">
-        <h2 id="links-title">Links</h2>
-        <div class="buttons">
-          <a href="#" target="_blank" rel="noopener">Twitter</a>
-          <a href="#" target="_blank" rel="noopener">Discord</a>
-          <a href="#" target="_blank" rel="noopener">Telegram</a>
-          <a href="#" target="_blank" rel="noopener">Pump.fun</a>
-        </div>
-      </section>
-    </main>
+      <div class="hero-text">
+        <p>He didn’t just walk on water… he walks on the blockchain. Powered by memes, destiny, and divine volatility.</p>
+      </div>
 
-    <footer>
-      <p>© 2025 Based Jesus. Hold your faith, hodl your coins!</p>
-    </footer>
+      <button id="blessBtn" onclick="alert('You have been blessed. +1 Luck for the next trade.')">
+        Bless Me 🙏
+      </button>
+    </div>
+
+    <!-- ROADMAP -->
+    <div class="roadmap">
+      <h2>Roadmap</h2>
+      <ul>
+        <li>Q1 2026: Launch Based Jesus Coin on mainnet</li>
+        <li>Q2 2026: Community voting & meme competitions</li>
+        <li>Q3 2026: NFT collection of divine memes</li>
+        <li>Q4 2026: Partnerships & listing on major exchanges</li>
+        <li>2027: Global meme domination and blockchain miracles</li>
+      </ul>
+    </div>
+
+    <!-- TWITTER -->
+    <<div class="twitter">
+  <h2>Follow Us</h2>
+  <p>Stay updated with the latest blessings and chaos:</p>
+  <a href="https://x.com/BasedJesus62408" target="_blank">@BasedJesus62408</a>
+</div>
   </div>
-
-  <script>
-    const btn = document.getElementById('blessBtn');
-    btn.addEventListener('click', () => {
-      btn.animate([
-        { transform: 'scale(1)', boxShadow: '0 0 12px rgba(255,0,221,0.8)' },
-        { transform: 'scale(1.15)', boxShadow: '0 0 45px rgba(255,0,221,0.95)' },
-        { transform: 'scale(1)', boxShadow: '0 0 12px rgba(255,0,221,0.8)' }
-      ], { duration: 600, easing: 'cubic-bezier(.2,.9,.2,1)' });
-
-      const msg = document.createElement('div');
-      msg.textContent = 'You have been blessed! ✝️🚀';
-      msg.style.position = 'fixed';
-      msg.style.left = '50%';
-      msg.style.top = '22%';
-      msg.style.transform = 'translateX(-50%)';
-      msg.style.background = 'linear-gradient(90deg, rgba(255,0,221,0.95), rgba(0,170,255,0.95))';
-      msg.style.color = '#000';
-      msg.style.padding = '12px 18px';
-      msg.style.borderRadius = '10px';
-      msg.style.fontWeight = '700';
-      msg.style.zIndex = 9999;
-      msg.style.boxShadow = '0 8px 40px rgba(0,0,0,0.6)';
-      document.body.appendChild(msg);
-
-      setTimeout(() => { msg.style.opacity = '0'; msg.style.transition = 'opacity .6s ease'; }, 1100);
-      setTimeout(() => { if(msg.parentNode) msg.parentNode.removeChild(msg); }, 1700);
-    });
-  </script>
 </body>
 </html>
