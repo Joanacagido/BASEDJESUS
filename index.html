@@ -8,7 +8,6 @@
   <!-- Fonte -->
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
 
-  <!-- CSS -->
   <style>
     :root {
       --pink: #ff00dd;
@@ -18,192 +17,136 @@
       --card-bg: rgba(2, 2, 6, 0.64);
     }
 
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    html, body { height: 100%; }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
       font-family: 'Orbitron', sans-serif;
       color: #fff;
       background: url('https://pbs.twimg.com/profile_images/1993369040455192576/RPJ3Ffcw_400x400.jpg') no-repeat center center fixed;
       background-size: cover;
-      position: relative;
+      line-height: 1.4;
       overflow-x: hidden;
-      line-height: 1.35;
-    }
-
-    @keyframes neon-flicker {
-      0%, 100% { opacity: 1; filter: brightness(1); }
-      5% { opacity: 0.88; filter: brightness(0.9); }
-      10% { opacity: 1; filter: brightness(1); }
     }
 
     .overlay {
       position: fixed;
       inset: 0;
-      background: linear-gradient(180deg, rgba(0,0,0,0.4) 0%, rgba(0,0,0,0.78) 100%);
-      backdrop-filter: blur(2px);
+      background: rgba(0,0,0,0.75);
+      backdrop-filter: blur(3px);
       z-index: 0;
-      pointer-events: none;
     }
 
-    .page {
-      position: relative;
-      z-index: 1;
-      min-height: 100%;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 36px;
-      padding: 60px 20px 80px;
-    }
+    .page { position: relative; z-index: 1; padding: 50px 20px; }
 
+    /* HERO */
     .hero { text-align: center; margin-top: 6vh; }
-    .hero img {
-      width: 140px;
-      height: 140px;
-      border-radius: 50%;
-      box-shadow: 0 0 16px var(--pink-glow);
-    }
+    .hero img { width: 140px; border-radius: 50%; box-shadow: 0 0 18px var(--pink-glow); }
     .hero h1 {
-      font-size: clamp(2.4rem, 6vw, 4.8rem);
-      color: var(--pink);
-      letter-spacing: 3px;
-      text-shadow: 0 0 8px var(--pink-glow), 0 0 32px rgba(255,0,221,0.45), 0 6px 24px rgba(0,0,0,0.6);
-      animation: neon-flicker 4s infinite;
+      font-size: 3.2rem; letter-spacing: 2px; margin-top: 16px;
+      color: var(--pink); text-shadow: 0 0 12px var(--pink-glow);
     }
-    .hero p {
-      margin-top: 12px;
-      font-size: clamp(0.95rem, 2.1vw, 1.25rem);
-      color: var(--blue);
-      text-shadow: 0 0 12px var(--blue-glow);
-    }
-    .hero-text p {
-      margin-top: 25px;
-      font-size: clamp(1rem, 2.2vw, 1.3rem);
-      color: var(--blue);
-      text-shadow: 0 0 12px var(--blue-glow), 0 0 30px rgba(0,0,0,0.45);
-      max-width: 700px;
-      margin-inline: auto;
-      line-height: 1.6;
-    }
+
+    .hero p { font-size: 1.2rem; color: var(--blue); margin-top: 5px; }
 
     #blessBtn {
-      margin-top: 20px;
-      padding: 12px 26px;
-      font-size: 1rem;
-      border-radius: 10px;
-      border: 2px solid rgba(255,0,221,0.95);
-      background: linear-gradient(90deg, rgba(255,0,221,0.12), rgba(0,170,255,0.06));
-      color: var(--pink);
-      cursor: pointer;
-      box-shadow: 0 0 14px rgba(255,0,221,0.65), 0 6px 30px rgba(0,0,0,0.6);
-      transition: transform .18s ease, box-shadow .18s ease, background .18s ease, color .18s ease;
-      backdrop-filter: blur(2px);
+      margin-top: 25px; padding: 12px 26px; font-size: 1rem;
+      border-radius: 10px; border: 2px solid var(--pink); color: var(--pink);
+      background: rgba(255,0,221,0.12); cursor: pointer;
+      transition: 0.2s ease;
     }
+
     #blessBtn:hover {
-      transform: translateY(-6px) scale(1.02);
-      background: linear-gradient(90deg, rgba(255,0,221,0.98), rgba(0,170,255,0.28));
-      color: #000;
-      box-shadow: 0 0 36px rgba(255,0,221,0.98), 0 0 80px rgba(0,0,255,0.28);
+      transform: translateY(-4px) scale(1.03);
+      background: var(--pink); color: #000; box-shadow: 0 0 28px var(--pink-glow);
     }
 
-    /* Roadmap Styles */
-    .roadmap {
-      width: 100%;
-      max-width: 900px;
-      padding: 40px 20px;
-      background: var(--card-bg);
-      border-radius: 16px;
-      box-shadow: 0 0 24px rgba(255,0,221,0.5), 0 0 48px rgba(0,170,255,0.3);
-      text-align: center;
-    }
-    .roadmap h2 {
-      font-size: clamp(2rem, 4vw, 3rem);
-      color: var(--pink);
-      text-shadow: 0 0 12px var(--pink-glow);
-      margin-bottom: 24px;
-    }
-    .roadmap ul {
-      list-style: none;
-      text-align: left;
-      padding-left: 0;
-    }
-    .roadmap li {
-      margin-bottom: 16px;
-      font-size: clamp(1rem, 2vw, 1.2rem);
-      color: var(--blue);
-      text-shadow: 0 0 8px var(--blue-glow);
-      position: relative;
-      padding-left: 24px;
-    }
-    .roadmap li::before {
-      content: "✨";
-      position: absolute;
-      left: 0;
+    section { margin-top: 70px; padding: 40px 20px; }
+    h2 { font-size: 1.8rem; text-align: center; margin-bottom: 20px; }
+
+    .card {
+      background: var(--card-bg); border-radius: 12px;
+      padding: 20px; max-width: 800px; margin: auto;
+      box-shadow: 0 0 15px rgba(0,0,0,0.5);
     }
 
-    /* Twitter Section */
-    .twitter {
-      margin-top: 40px;
-      text-align: center;
-      color: var(--blue);
-    }
-    .twitter h2 {
-      font-size: clamp(2rem, 4vw, 3rem);
-      color: var(--pink);
-      text-shadow: 0 0 12px var(--pink-glow);
-      margin-bottom: 16px;
-    }
-    .twitter a {
-      color: var(--blue);
-      text-decoration: none;
-      font-size: 1.2rem;
-      text-shadow: 0 0 8px var(--blue-glow);
-      transition: color .2s;
-    }
-    .twitter a:hover {
-      color: var(--pink);
-    }
+    ul { margin-top: 10px; list-style: none; padding-left: 0; }
+    li { margin-bottom: 8px; }
 
+    .twitter-link { text-align: center; margin-top: 20px; }
+    .twitter-link a { color: var(--blue); text-decoration: none; font-size: 1.2rem; }
+    .twitter-link a:hover { color: var(--pink); text-shadow: 0 0 12px var(--blue-glow); }
   </style>
 </head>
+
 <body>
   <div class="overlay"></div>
-
   <div class="page">
-    <div class="hero">
-      <!-- LOGO / PERFIL -->
-      <img src="https://pbs.twimg.com/profile_images/1993369040455192576/RPJ3Ffcw_400x400.jpg" alt="Based Jesus Logo" />
 
+    <!-- HERO -->
+    <div class="hero">
+      <img src="https://pbs.twimg.com/profile_images/1993369040455192576/RPJ3Ffcw_400x400.jpg" alt="Based Jesus Logo" />
       <h1>BASED JESUS</h1>
       <p>The Meme Coin of Faith & Chaos</p>
 
-      <div class="hero-text">
-        <p>He didn’t just walk on water… he walks on the blockchain. Powered by memes, destiny, and divine volatility.</p>
-      </div>
-
-      <button id="blessBtn" onclick="alert('You have been blessed. +1 Luck for the next trade.')">
+      <button id="blessBtn" onclick="alert('✨ You have been blessed. +1 Luck for the next trade. ✨')">
         Bless Me 🙏
       </button>
     </div>
 
     <!-- ROADMAP -->
-    <div class="roadmap">
-      <h2>Roadmap</h2>
-      <ul>
-        <li>Q1 2026: Launch Based Jesus Coin on mainnet</li>
-        <li>Q2 2026: Community voting & meme competitions</li>
-        <li>Q3 2026: NFT collection of divine memes</li>
-        <li>Q4 2026: Partnerships & listing on major exchanges</li>
-        <li>2027: Global meme domination and blockchain miracles</li>
-      </ul>
-    </div>
+    <section id="roadmap">
+      <h2>📜 ROADMAP — THE PROPHECY</h2>
+      <div class="card">
+        <ul>
+          <li>Phase 1: The Apostles Gather — Community Building</li>
+          <li>Phase 2: Miracles & Memes — Viral Marketing</li>
+          <li>Phase 3: Walk on Water — CEX Listings</li>
+          <li>Phase 4: Final Redemption — IRL Events & Holy Partnerships</li>
+        </ul>
+      </div>
+  <!-- LAUNCH INFO -->
+<section id="launch">
+  <h2>🚀 LAUNCH ANNOUNCEMENT</h2>
+  <div class="card">
+    <p>
+      Based Jesus Coin will be officially <strong>LAUNCHED on Pump.fun</strong>  
+      on <strong>December 6th</strong> — the prophecy becomes reality.
+      <br><br>
+      Be ready... faith fuels the chart. 📈✨
+    </p>
 
-    <!-- TWITTER -->
-    <<div class="twitter">
-  <h2>Follow Us</h2>
-  <p>Stay updated with the latest blessings and chaos:</p>
-  <a href="https://x.com/BasedJesus62408" target="_blank">@BasedJesus62408</a>
-</div>
+    <button id="blessBtn" onclick="alert('Prepare your wallet, believer. The launch is near!')">
+      Bless the Launch 🙏🚀
+    </button>
+  </div>
+</section>
+<section id="value">
+  <h2>📈 THE PROPHECY BEHIND BASED JESUS</h2>
+  <ul>
+    <li>🌀 Powered by community</li>
+    <li>⚡ Built on chaos & faith</li>
+    <li>🔥 Meme potential: OVER 9000</li>
+    <li>💎 Airdrops for true believers</li>
+  </ul>
+</section>
+
+
+    <!-- COMMUNITY -->
+    <section id="community">
+      <h2>⚡ COMMUNITY IS OUR CHURCH</h2>
+      <div class="card">
+        <p>We preach memes, faith and financial freedom. The church of Based Jesus welcomes holders, believers and degenerates.</p>
+      </div>
+    </section>
+
+    <!-- SOCIAL MEDIA -->
+    <section id="social">
+      <h2>📡 FOLLOW THE SIGNS</h2>
+      <div class="card twitter-link">
+        <p>Find us on Twitter for daily miracles:</p>
+        <a href="https://x.com/BasedJesus62408" target="_blank">🔗 @BasedJesus62408</a>
+      </div>
+    </section>
+
   </div>
 </body>
 </html>
